@@ -1,0 +1,308 @@
+[
+  {
+    "file": "public/icons/favicon-16.png",
+    "size": [
+      16,
+      16
+    ],
+    "mode": "RGB",
+    "purpose": "Browser tabs and bookmarks; unchanged full logo"
+  },
+  {
+    "file": "public/icons/favicon-32.png",
+    "size": [
+      32,
+      32
+    ],
+    "mode": "RGB",
+    "purpose": "Browser tabs and bookmarks; unchanged full logo"
+  },
+  {
+    "file": "public/icons/favicon-48.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "purpose": "Browser tabs and bookmarks; unchanged full logo"
+  },
+  {
+    "file": "public/favicon.png",
+    "size": [
+      64,
+      64
+    ],
+    "mode": "RGB",
+    "purpose": "Browser tabs and bookmarks; unchanged full logo"
+  },
+  {
+    "file": "public/favicon.ico",
+    "size": [
+      16,
+      32,
+      48
+    ],
+    "purpose": "Legacy browser and Windows bookmark multi-resolution favicon"
+  },
+  {
+    "file": "public/icons/icon-192.png",
+    "size": [
+      192,
+      192
+    ],
+    "mode": "RGB",
+    "purpose": "PWA any-purpose Android/desktop icon"
+  },
+  {
+    "file": "public/icons/icon-512.png",
+    "size": [
+      512,
+      512
+    ],
+    "mode": "RGB",
+    "purpose": "PWA any-purpose Android/desktop icon"
+  },
+  {
+    "file": "public/icons/icon-maskable-192.png",
+    "size": [
+      192,
+      192
+    ],
+    "mode": "RGB",
+    "purpose": "PWA maskable; colored artwork within central 80% diameter circle"
+  },
+  {
+    "file": "public/icons/icon-maskable-512.png",
+    "size": [
+      512,
+      512
+    ],
+    "mode": "RGB",
+    "purpose": "PWA maskable; colored artwork within central 80% diameter circle"
+  },
+  {
+    "file": "public/icons/apple-touch-icon.png",
+    "size": [
+      180,
+      180
+    ],
+    "mode": "RGB",
+    "purpose": "Opaque Apple Touch Icon for iPhone/iPad/Safari"
+  },
+  {
+    "file": "public/icons/apple-touch-icon-167.png",
+    "size": [
+      167,
+      167
+    ],
+    "mode": "RGB",
+    "purpose": "Opaque Apple Touch Icon for iPhone/iPad/Safari"
+  },
+  {
+    "file": "public/icons/apple-touch-icon-152.png",
+    "size": [
+      152,
+      152
+    ],
+    "mode": "RGB",
+    "purpose": "Opaque Apple Touch Icon for iPhone/iPad/Safari"
+  },
+  {
+    "file": "platform-assets/play-store/play-store-icon-512.png",
+    "size": [
+      512,
+      512
+    ],
+    "mode": "RGB",
+    "purpose": "Google Play listing: opaque RGB PNG, 512 square, no added decoration"
+  },
+  {
+    "file": "assets/branding/android-foreground-master.png",
+    "size": [
+      1080,
+      1080
+    ],
+    "mode": "RGBA",
+    "purpose": "Adaptive foreground master; artwork within Android 66/108 safe circle"
+  },
+  {
+    "file": "platform-assets/android/res/mipmap-mdpi/ic_launcher.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "purpose": "Legacy Android launcher, density-specific, circular-crop safe"
+  },
+  {
+    "file": "platform-assets/android/res/mipmap-mdpi/ic_launcher_round.png",
+    "size": [
+      48,
+      48
+    ],
+    "mode": "RGB",
+    "purpose": "Legacy Android launcher, density-specific, circular-crop safe"
+  },
+  {
+    "file": "platform-assets/android/res/mipmap-mdpi/ic_launcher_foreground.png",
+    "size": [
+      108,
+      108
+    ],
+    "mode": "RGBA",
+    "purpose": "Adaptive Android foreground; transparent outside original logo tile"
+  },
+  {
+    "file": "platform-assets/android/res/mipmap-mdpi/ic_launcher_background.png",
+    "size": [
+      108,
+      108
+    ],
+    "mode": "RGB",
+    "purpose": "Opaque original-logo cream adaptive background"
+  },
+  {
+    "file": "platform-assets/android/res/mipmap-hdpi/ic_launcher.png",
+    "size": [
+      72,
+      72
+    ],
+    "mode": "RGB",
+    "purpose": "Legacy Android launcher, density-specific, circular-crop safe"
+  },
+  {
+    "file": "platform-assets/android/res/mipmap-hdpi/ic_launcher_round.png",
+    "size": [
+      72,
+      72
+    ],
+    "mode": "RGB",
+    "purpose": "Legacy Android launcher, density-specific, circular-crop safe"
+  },
+  {
+    "file": "platform-assets/android/res/mipmap-hdpi/ic_launcher_foreground.png",
+    "size": [
+      162,
+      162
+    ],
+    "mode": "RGBA",
+    "purpose": "Adaptive Android foreground; transparent outside original logo tile"
+  },
+  {
+    "file": "platform-assets/android/res/mipmap-hdpi/ic_launcher_background.png",
+    "size": [
+      162,
+      162
+    ],
+    "mode": "RGB",
+    "purpose": "Opaque original-logo cream adaptive background"
+  },
+  {
+    "file": "platform-assets/android/res/mipmap-xhdpi/ic_launcher.png",
+    "size": [
+      96,
+      96
+    ],
+    "mode": "RGB",
+    "purpose": "Legacy Android launcher, density-specific, circular-crop safe"
+  },
+  {
+    "file": "platform-assets/android/res/mipmap-xhdpi/ic_launcher_round.png",
+    "size": [
+      96,
+      96
+    ],
+    "mode": "RGB",
+    "purpose": "Legacy Android launcher, density-specific, circular-crop safe"
+  },
+  {
+    "file": "platform-assets/android/res/mipmap-xhdpi/ic_launcher_foreground.png",
+    "size": [
+      216,
+      216
+    ],
+    "mode": "RGBA",
+    "purpose": "Adaptive Android foreground; transparent outside original logo tile"
+  },
+  {
+    "file": "platform-assets/android/res/mipmap-xhdpi/ic_launcher_background.png",
+    "size": [
+      216,
+      216
+    ],
+    "mode": "RGB",
+    "purpose": "Opaque original-logo cream adaptive background"
+  },
+  {
+    "file": "platform-assets/android/res/mipmap-xxhdpi/ic_launcher.png",
+    "size": [
+      144,
+      144
+    ],
+    "mode": "RGB",
+    "purpose": "Legacy Android launcher, density-specific, circular-crop safe"
+  },
+  {
+    "file": "platform-assets/android/res/mipmap-xxhdpi/ic_launcher_round.png",
+    "size": [
+      144,
+      144
+    ],
+    "mode": "RGB",
+    "purpose": "Legacy Android launcher, density-specific, circular-crop safe"
+  },
+  {
+    "file": "platform-assets/android/res/mipmap-xxhdpi/ic_launcher_foreground.png",
+    "size": [
+      324,
+      324
+    ],
+    "mode": "RGBA",
+    "purpose": "Adaptive Android foreground; transparent outside original logo tile"
+  },
+  {
+    "file": "platform-assets/android/res/mipmap-xxhdpi/ic_launcher_background.png",
+    "size": [
+      324,
+      324
+    ],
+    "mode": "RGB",
+    "purpose": "Opaque original-logo cream adaptive background"
+  },
+  {
+    "file": "platform-assets/android/res/mipmap-xxxhdpi/ic_launcher.png",
+    "size": [
+      192,
+      192
+    ],
+    "mode": "RGB",
+    "purpose": "Legacy Android launcher, density-specific, circular-crop safe"
+  },
+  {
+    "file": "platform-assets/android/res/mipmap-xxxhdpi/ic_launcher_round.png",
+    "size": [
+      192,
+      192
+    ],
+    "mode": "RGB",
+    "purpose": "Legacy Android launcher, density-specific, circular-crop safe"
+  },
+  {
+    "file": "platform-assets/android/res/mipmap-xxxhdpi/ic_launcher_foreground.png",
+    "size": [
+      432,
+      432
+    ],
+    "mode": "RGBA",
+    "purpose": "Adaptive Android foreground; transparent outside original logo tile"
+  },
+  {
+    "file": "platform-assets/android/res/mipmap-xxxhdpi/ic_launcher_background.png",
+    "size": [
+      432,
+      432
+    ],
+    "mode": "RGB",
+    "purpose": "Opaque original-logo cream adaptive background"
+  }
+]
