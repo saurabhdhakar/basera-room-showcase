@@ -86,7 +86,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Find and list rooms, flats and PGs across India with Basera.",
       },
       { name: "author", content: "Basera" },
-      { name: "theme-color", content: "#E8600A" },
+      { name: "theme-color", content: "#0C3B2E" },
       { name: "mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-capable", content: "yes" },
       {
