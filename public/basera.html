@@ -29,6 +29,13 @@
   --muted:#6B7180;
   --green:#1E8E5A;
   --danger:#D64545;
+  --chat-blue:#2374E1;
+  --chat-action:#002F34;
+  --chat-surface:#FFFFFF;
+  --chat-ink:#002F34;
+  --chat-selected:#EAF3FF;
+  --chat-border:#CBD4D6;
+  --chat-on-action:#FFFFFF;
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
@@ -494,7 +501,35 @@ header.top{
 .chat-row .cr-body b{font-size:13.5px; display:block; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
 .chat-row .cr-body .cr-preview{font-size:11.5px; color:var(--muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; margin-top:2px;}
 .chat-row .cr-time{font-size:10px; color:var(--muted); flex:0 0 auto;}
-.chats-empty{padding:60px 24px; text-align:center; color:var(--muted); font-size:13px;}
+.chats-empty{padding:40px 24px; text-align:center; color:var(--chat-ink);}
+#chatsListScreen{background:var(--chat-surface); color:var(--chat-ink); display:flex; flex-direction:column;}
+#chatsListScreen .app-header{position:static; background:var(--chat-surface); border:0; padding-bottom:10px;}
+#chatsListScreen .p-back{width:36px; height:36px; display:grid; place-items:center; color:var(--chat-ink); font-size:25px;}
+.chat-tabs{position:relative; display:grid; grid-template-columns:1fr 1fr; border-bottom:1px solid var(--chat-border); flex-shrink:0;}
+.chat-tabs:after{content:""; position:absolute; height:4px; width:50%; left:0; bottom:-1px; background:var(--chat-blue); transition:transform .18s ease;}
+.chat-tabs[data-tab="selling"]:after{transform:translateX(100%);}
+.chat-tab{height:54px; font-size:17px; font-weight:700; color:var(--chat-ink); opacity:.65;}
+.chat-tab[aria-selected="true"]{opacity:1;}
+.chat-filters-section{padding:22px 0 16px; flex-shrink:0;}
+.chat-filters-section h3{font-size:14px; font-weight:600; margin:0 20px 12px;}
+.chat-quick-filters{display:flex; gap:8px; overflow-x:auto; padding:2px 20px 6px; scrollbar-width:none;}
+.chat-quick-filters::-webkit-scrollbar{display:none;}
+.chat-filter{flex-shrink:0; min-height:38px; padding:8px 15px; border:1px solid var(--chat-border); border-radius:20px; color:var(--chat-ink); font-size:13px; white-space:nowrap;}
+.chat-filter[aria-pressed="true"]{background:var(--chat-selected); border-color:var(--chat-blue); box-shadow:inset 0 0 0 1px var(--chat-blue);}
+.chat-tab:focus-visible,.chat-filter:focus-visible,.chat-empty-action:focus-visible,.nav-item:focus-visible{outline:2px solid var(--chat-blue); outline-offset:3px;}
+#chatsListBody{flex:1; display:flex; flex-direction:column; min-height:0;}
+.chats-empty{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:22px; min-height:350px; padding-bottom:48px;}
+.chat-search-art{width:190px; height:190px; object-fit:contain; flex-shrink:0;}
+.chats-empty p{max-width:340px; font-size:16px; line-height:1.75;}
+.chat-empty-action.btn{width:auto; min-width:220px; max-width:100%; min-height:48px; padding:12px 22px; border-radius:4px; background:var(--chat-action); color:var(--chat-on-action); font-size:15px; font-weight:700;}
+.chat-empty-action:active,.chat-filter:active,.chat-tab:active{transform:scale(.98);}
+body.chat-list-open .bottomnav{z-index:60; background:var(--chat-surface); color:var(--chat-ink);}
+body.chat-list-open .nav-item{color:var(--chat-ink); min-height:44px; justify-content:center;}
+body.chat-list-open .nav-item.active{color:var(--chat-blue); font-weight:700;}
+body.chat-list-open .nav-item.active svg{fill:var(--chat-selected);}
+@media(max-height:650px){.chats-empty{min-height:280px; gap:14px; padding:20px 24px 30px;}.chat-search-art{width:135px; height:135px;}}
+@media(min-width:768px){.chat-filters-section,.chat-tabs,#chatsListBody{width:100%; max-width:900px; margin-left:auto; margin-right:auto;}}
+@media(prefers-reduced-motion:reduce){.chat-tabs:after,#chatsListScreen{transition:none;}}
 
 .chat-header{
   display:flex; align-items:center; gap:10px; padding:10px 14px;
@@ -716,11 +751,11 @@ header.top{
 </div>
 
 <nav class="bottomnav">
-  <div class="nav-item active" id="homeNavBtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 11L12 3L21 11" stroke="currentColor" stroke-width="2"/><path d="M5 10V20H19V10" stroke="currentColor" stroke-width="2"/></svg><span data-i18n="nav_home">होम</span></div>
-  <div class="nav-item" id="chatsNavBtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.4H4.5L3 21l1.2-3.6A8.4 8.4 0 1 1 21 11.5z" stroke="currentColor" stroke-width="2"/></svg><span data-i18n="nav_chat">चैट</span></div>
-  <div class="nav-item post" id="postNavBtn"><div class="post-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#3a2100" stroke-width="2.6" stroke-linecap="round"/></svg></div><span data-i18n="nav_sell">बेचें</span></div>
-  <div class="nav-item" id="myAdsNavBtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span data-i18n="nav_myads">मेरे विज्ञापन</span></div>
-  <div class="nav-item" id="profileNavBtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="2"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0" stroke="currentColor" stroke-width="2"/></svg><span data-i18n="nav_profile">खाता</span></div>
+  <button type="button" class="nav-item active" id="homeNavBtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 11L12 3L21 11" stroke="currentColor" stroke-width="2"/><path d="M5 10V20H19V10" stroke="currentColor" stroke-width="2"/></svg><span data-i18n="nav_home">होम</span></button>
+  <button type="button" class="nav-item" id="chatsNavBtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.4H4.5L3 21l1.2-3.6A8.4 8.4 0 1 1 21 11.5z" stroke="currentColor" stroke-width="2"/></svg><span data-i18n="nav_chat">चैट</span></button>
+  <button type="button" class="nav-item post" id="postNavBtn"><div class="post-btn"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#3a2100" stroke-width="2.6" stroke-linecap="round"/></svg></div><span data-i18n="nav_sell">बेचें</span></button>
+  <button type="button" class="nav-item" id="myAdsNavBtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span data-i18n="nav_myads">मेरे विज्ञापन</span></button>
+  <button type="button" class="nav-item" id="profileNavBtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="2"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0" stroke="currentColor" stroke-width="2"/></svg><span data-i18n="nav_profile">खाता</span></button>
 </nav>
 
 <!-- FILTER & SORT MODAL -->
@@ -994,10 +1029,25 @@ header.top{
 <!-- CHATS LIST SCREEN -->
 <div class="app-screen light" id="chatsListScreen">
   <div class="app-header light">
-    <span id="chatsListBack" class="p-back dark">←</span>
+    <button type="button" id="chatsListBack" class="p-back dark" aria-label="होम पर वापस जाएं">←</button>
     <h2 class="ma-title" data-i18n="chats_title">चैट</h2>
   </div>
-  <div id="chatsListBody" style="padding:6px 0 0;"></div>
+  <div class="chat-tabs" id="chatTabs" role="tablist" aria-label="चैट प्रकार" data-tab="buying">
+    <button type="button" class="chat-tab" id="chatBuyingTab" role="tab" aria-selected="true" aria-controls="chatsListBody" data-chat-tab="buying">खरीदना</button>
+    <button type="button" class="chat-tab" id="chatSellingTab" role="tab" aria-selected="false" aria-controls="chatsListBody" tabindex="-1" data-chat-tab="selling">बेचना</button>
+  </div>
+  <section class="chat-filters-section" aria-label="त्वरित फ़िल्टर">
+    <h3>त्वरित फ़िल्टर</h3>
+    <div class="chat-quick-filters">
+      <button type="button" class="chat-filter" data-chat-filter="all" aria-pressed="true">सभी</button>
+      <button type="button" class="chat-filter" data-chat-filter="matched" aria-pressed="false">OLX Matched Sellers</button>
+      <button type="button" class="chat-filter" data-chat-filter="unread" aria-pressed="false">नहीं पढ़े गए</button>
+      <button type="button" class="chat-filter" data-chat-filter="important" aria-pressed="false">महत्वपूर्ण</button>
+      <button type="button" class="chat-filter" data-chat-filter="eliteBuyer" aria-pressed="false">Elite Buyer</button>
+      <button type="button" class="chat-filter" data-chat-filter="eliteSeller" aria-pressed="false">Elite Seller</button>
+    </div>
+  </section>
+  <div id="chatsListBody" role="tabpanel" aria-labelledby="chatBuyingTab" aria-live="polite"></div>
 </div>
 
 <!-- CHAT DETAIL SCREEN -->
@@ -2767,6 +2817,7 @@ function openDetail(l){
 
 /* ---------------- PROFILE & MY ADS SCREENS ---------------- */
 function closeAllScreens(){
+  document.body.classList.remove("chat-list-open");
   document.getElementById('profileScreen').classList.remove('open');
   document.getElementById('myAdsScreen').classList.remove('open');
   document.getElementById('helpScreen').classList.remove('open');
@@ -3329,9 +3380,52 @@ function chatThumbHTML(chat){
   return '<div style="width:100%;height:100%;background:linear-gradient(135deg,'+g[0]+','+g[1]+');"></div>';
 }
 
+var chatListState = { tab:'buying', filter:'all' };
+function selectChatTab(tab){
+  chatListState.tab = tab;
+  document.getElementById('chatTabs').setAttribute('data-tab', tab);
+  document.querySelectorAll('[data-chat-tab]').forEach(function(button){
+    var selected = button.getAttribute('data-chat-tab') === tab;
+    button.setAttribute('aria-selected', String(selected));
+    button.tabIndex = selected ? 0 : -1;
+  });
+  document.getElementById('chatsListBody').setAttribute('aria-labelledby', tab === 'buying' ? 'chatBuyingTab' : 'chatSellingTab');
+  renderChatsList();
+}
+document.querySelectorAll('[data-chat-tab]').forEach(function(button){
+  button.addEventListener('click', function(){selectChatTab(button.getAttribute('data-chat-tab'));});
+  button.addEventListener('keydown', function(event){
+    if(['ArrowLeft','ArrowRight','Home','End'].indexOf(event.key) < 0) return;
+    event.preventDefault();
+    var tab = event.key === 'Home' ? 'buying' : event.key === 'End' ? 'selling' : chatListState.tab === 'buying' ? 'selling' : 'buying';
+    selectChatTab(tab);
+    document.querySelector('[data-chat-tab="'+tab+'"]').focus();
+  });
+});
+document.querySelectorAll('[data-chat-filter]').forEach(function(button){
+  button.addEventListener('click', function(){
+    var filter = button.getAttribute('data-chat-filter');
+    chatListState.filter = chatListState.filter === filter ? 'all' : filter;
+    document.querySelectorAll('[data-chat-filter]').forEach(function(chip){
+      chip.setAttribute('aria-pressed', String(chip.getAttribute('data-chat-filter') === chatListState.filter));
+    });
+    renderChatsList();
+  });
+});
+function chatMatchesFilters(chat){
+  if((chat.role === 'selling' ? 'selling' : 'buying') !== chatListState.tab) return false;
+  switch(chatListState.filter){
+    case 'matched': return chat.matchedSeller === true;
+    case 'unread': return chat.unread === true || chat.unreadCount > 0;
+    case 'important': return chat.important === true;
+    case 'eliteBuyer': return chat.eliteBuyer === true;
+    case 'eliteSeller': return chat.eliteSeller === true;
+    default: return true;
+  }
+}
 function renderChatsList(){
   var chats = getChats();
-  var rows = Object.keys(chats).map(function(k){ return chats[k]; })
+  var rows = Object.keys(chats).map(function(k){ return chats[k]; }).filter(chatMatchesFilters)
     .sort(function(a,b){
       var at = a.messages.length ? a.messages[a.messages.length-1].time : 0;
       var bt = b.messages.length ? b.messages[b.messages.length-1].time : 0;
@@ -3339,7 +3433,15 @@ function renderChatsList(){
     });
   var body = document.getElementById('chatsListBody');
   if(!rows.length){
-    body.innerHTML = '<div class="chats-empty"><div>'+t('chats_empty_t')+'</div><div style="margin-top:6px;">'+t('chats_empty_s')+'</div></div>';
+    var buying = chatListState.tab === 'buying';
+    body.innerHTML = '<div class="chats-empty">'+
+      '<img class="chat-search-art" src="/assets/chat-search.png" width="190" height="190" alt="आवर्धक कांच से देखता हुआ व्यक्ति">'+
+      '<p>'+(buying ? 'आपके पास अब तक कोई संदेश नहीं है! बातचीत शुरू करने वाले पहले व्यक्ति बनें।' : 'आपके पास अब तक कोई संदेश नहीं है! जैसे ही कोई आपको संदेश भेजेगा, वह यहां दिखना शुरू हो जाएगा।')+'</p>'+
+      '<button type="button" class="btn chat-empty-action" id="chatEmptyAction">'+(buying ? 'संदेश भेजना शुरू करें' : 'बेचना शुरू करें')+'</button></div>';
+    document.getElementById('chatEmptyAction').addEventListener('click', function(){
+      if(buying){ closeAllScreens(); window.scrollTo({top:0, behavior:'instant'}); }
+      else { openPost(); }
+    });
     return;
   }
   body.innerHTML = rows.map(function(c){
@@ -3360,6 +3462,7 @@ function renderChatsList(){
 document.getElementById('chatsNavBtn').addEventListener('click', function(){
   closeAllScreens();
   document.getElementById('chatsListScreen').classList.add('open');
+  document.body.classList.add('chat-list-open');
   document.getElementById('chatsNavBtn').classList.add('active');
   document.getElementById('homeNavBtn').classList.remove('active');
   renderChatsList();
@@ -3440,6 +3543,7 @@ function showChatDetail(listingId){
 document.getElementById('chatDetailBack').addEventListener('click', function(){
   closeAllScreens();
   document.getElementById('chatsListScreen').classList.add('open');
+  document.body.classList.add('chat-list-open');
   document.getElementById('chatsNavBtn').classList.add('active');
   document.getElementById('homeNavBtn').classList.remove('active');
   renderChatsList();
