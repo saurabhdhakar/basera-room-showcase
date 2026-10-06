@@ -7,6 +7,6 @@
 - [ ] Verify actual Android launcher/build wiring — blocked: this repository has no Android/Capacitor project or existing application ID.
 
 ## Interactive Hindi chat screen
-- [ ] Add buying/selling tabs, quick filters, illustration, and exact Hindi empty states.
-- [ ] Connect primary actions and keep all five bottom navigation items usable.
-- [ ] Verify tab/filter/action interactions and preserve existing messaging behavior.
+- [x] Add buying/selling tabs, quick filters, illustration, and exact Hindi empty states.
+- [x] Connect primary actions and keep all five bottom navigation items usable.
+- [x] Verify tab/filter/action interactions and preserve existing messaging behavior.
