@@ -10,3 +10,8 @@
 - [x] Add buying/selling tabs, quick filters, illustration, and exact Hindi empty states.
 - [x] Connect primary actions and keep all five bottom navigation items usable.
 - [x] Verify tab/filter/action interactions and preserve existing messaging behavior.
+
+## Language preference and chat translations
+- [ ] Default first launch to English and persist Hindi only after an explicit language selection.
+- [ ] Translate every chat-list label and empty state from the global language state without changing handlers.
+- [ ] Verify first launch, saved language reload, instant language switching, and chat interactions.
