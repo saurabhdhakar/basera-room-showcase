@@ -1033,18 +1033,18 @@ body.chat-list-open .nav-item.active svg{fill:var(--chat-selected);}
     <h2 class="ma-title" data-i18n="chats_title">चैट</h2>
   </div>
   <div class="chat-tabs" id="chatTabs" role="tablist" aria-label="चैट प्रकार" data-tab="buying">
-    <button type="button" class="chat-tab" id="chatBuyingTab" role="tab" aria-selected="true" aria-controls="chatsListBody" data-chat-tab="buying">खरीदना</button>
-    <button type="button" class="chat-tab" id="chatSellingTab" role="tab" aria-selected="false" aria-controls="chatsListBody" tabindex="-1" data-chat-tab="selling">बेचना</button>
+    <button type="button" class="chat-tab" id="chatBuyingTab" role="tab" aria-selected="true" aria-controls="chatsListBody" data-chat-tab="buying" data-i18n="chat_tab_buying">खरीदना</button>
+    <button type="button" class="chat-tab" id="chatSellingTab" role="tab" aria-selected="false" aria-controls="chatsListBody" tabindex="-1" data-chat-tab="selling" data-i18n="chat_tab_selling">बेचना</button>
   </div>
   <section class="chat-filters-section" aria-label="त्वरित फ़िल्टर">
-    <h3>त्वरित फ़िल्टर</h3>
+    <h3 data-i18n="chat_quick_filters">त्वरित फ़िल्टर</h3>
     <div class="chat-quick-filters">
-      <button type="button" class="chat-filter" data-chat-filter="all" aria-pressed="true">सभी</button>
-      <button type="button" class="chat-filter" data-chat-filter="matched" aria-pressed="false">OLX Matched Sellers</button>
-      <button type="button" class="chat-filter" data-chat-filter="unread" aria-pressed="false">नहीं पढ़े गए</button>
-      <button type="button" class="chat-filter" data-chat-filter="important" aria-pressed="false">महत्वपूर्ण</button>
-      <button type="button" class="chat-filter" data-chat-filter="eliteBuyer" aria-pressed="false">Elite Buyer</button>
-      <button type="button" class="chat-filter" data-chat-filter="eliteSeller" aria-pressed="false">Elite Seller</button>
+      <button type="button" class="chat-filter" data-chat-filter="all" aria-pressed="true" data-i18n="chat_filter_all">सभी</button>
+      <button type="button" class="chat-filter" data-chat-filter="matched" aria-pressed="false" data-i18n="chat_filter_matched">OLX Matched Sellers</button>
+      <button type="button" class="chat-filter" data-chat-filter="unread" aria-pressed="false" data-i18n="chat_filter_unread">नहीं पढ़े गए</button>
+      <button type="button" class="chat-filter" data-chat-filter="important" aria-pressed="false" data-i18n="chat_filter_important">महत्वपूर्ण</button>
+      <button type="button" class="chat-filter" data-chat-filter="eliteBuyer" aria-pressed="false" data-i18n="chat_filter_elite_buyer">Elite Buyer</button>
+      <button type="button" class="chat-filter" data-chat-filter="eliteSeller" aria-pressed="false" data-i18n="chat_filter_elite_seller">Elite Seller</button>
     </div>
   </section>
   <div id="chatsListBody" role="tabpanel" aria-labelledby="chatBuyingTab" aria-live="polite"></div>
@@ -1499,6 +1499,13 @@ var I18N = {
     toast_ad_submit_failed:"पोस्ट नहीं हो पाया। दोबारा कोशिश करें।",
     toast_ad_submitting:"फोटो अपलोड हो रही हैं...",
     chats_title:"चैट",
+    chat_tab_buying:"खरीदना", chat_tab_selling:"बेचना", chat_quick_filters:"त्वरित फ़िल्टर",
+    chat_filter_all:"सभी", chat_filter_matched:"OLX Matched Sellers", chat_filter_unread:"नहीं पढ़े गए",
+    chat_filter_important:"महत्वपूर्ण", chat_filter_elite_buyer:"Elite Buyer", chat_filter_elite_seller:"Elite Seller",
+    chat_empty_buying:"आपके पास अब तक कोई संदेश नहीं है! बातचीत शुरू करने वाले पहले व्यक्ति बनें।",
+    chat_empty_selling:"आपके पास अब तक कोई संदेश नहीं है! जैसे ही कोई आपको संदेश भेजेगा, वह यहां दिखना शुरू हो जाएगा।",
+    chat_start_messaging:"संदेश भेजना शुरू करें", chat_start_selling:"बेचना शुरू करें",
+    chat_illustration_alt:"आवर्धक कांच से देखता हुआ व्यक्ति", chat_types_label:"चैट प्रकार",
     chats_empty_t:"अभी तक कोई चैट नहीं",
     chats_empty_s:"किसी लिस्टिंग पर जाकर मालिक को मैसेज भेजें",
     chat_call_word:"कॉल करें",
@@ -1733,6 +1740,13 @@ var I18N = {
     toast_ad_submit_failed:"Couldn't post. Please try again.",
     toast_ad_submitting:"Uploading photos...",
     chats_title:"Chats",
+    chat_tab_buying:"Buying", chat_tab_selling:"Selling", chat_quick_filters:"Quick Filters",
+    chat_filter_all:"All", chat_filter_matched:"OLX Matched Sellers", chat_filter_unread:"Unread",
+    chat_filter_important:"Important", chat_filter_elite_buyer:"Elite Buyer", chat_filter_elite_seller:"Elite Seller",
+    chat_empty_buying:"You don't have any messages yet! Be the first to start a conversation.",
+    chat_empty_selling:"You don't have any messages yet! When someone messages you, it will appear here.",
+    chat_start_messaging:"Start messaging", chat_start_selling:"Start selling",
+    chat_illustration_alt:"Person looking through a magnifying glass", chat_types_label:"Chat type",
     chats_empty_t:"No chats yet",
     chats_empty_s:"Open a listing and message the owner to start",
     chat_call_word:"Call",
@@ -1770,7 +1784,7 @@ var LANGS = [
   {code:'hi', name:'हिन्दी'},
   {code:'en', name:'English'}
 ];
-var currentLang = 'hi';
+var currentLang = 'en';
 try{ var savedLang = localStorage.getItem('basera_lang'); if(savedLang && I18N[savedLang]) currentLang = savedLang; }catch(e){}
 function t(key){ return (I18N[currentLang] && I18N[currentLang][key]) || (I18N.hi[key]) || key; }
 function catLabel(cat){ return t('cat_'+cat); }
@@ -2940,6 +2954,8 @@ function applyLanguage(code){
     var key = el.getAttribute('data-i18n-ph');
     if(I18N[code][key] !== undefined) el.placeholder = I18N[code][key];
   });
+  document.getElementById('chatTabs').setAttribute('aria-label', t('chat_types_label'));
+  document.querySelector('#chatsListScreen .chat-filters-section').setAttribute('aria-label', t('chat_quick_filters'));
   var curLbl = document.getElementById('currentLangLabel');
   if(curLbl) curLbl.textContent = code==='hi' ? t('lang_name_hi') : t('lang_name_en');
   updateFilterChipLabels();
@@ -3435,9 +3451,9 @@ function renderChatsList(){
   if(!rows.length){
     var buying = chatListState.tab === 'buying';
     body.innerHTML = '<div class="chats-empty">'+
-      '<img class="chat-search-art" src="/assets/chat-search.png" width="190" height="190" alt="आवर्धक कांच से देखता हुआ व्यक्ति">'+
-      '<p>'+(buying ? 'आपके पास अब तक कोई संदेश नहीं है! बातचीत शुरू करने वाले पहले व्यक्ति बनें।' : 'आपके पास अब तक कोई संदेश नहीं है! जैसे ही कोई आपको संदेश भेजेगा, वह यहां दिखना शुरू हो जाएगा।')+'</p>'+
-      '<button type="button" class="btn chat-empty-action" id="chatEmptyAction">'+(buying ? 'संदेश भेजना शुरू करें' : 'बेचना शुरू करें')+'</button></div>';
+      '<img class="chat-search-art" src="/assets/chat-search.png" width="190" height="190" alt="'+t('chat_illustration_alt')+'">'+
+      '<p>'+t(buying ? 'chat_empty_buying' : 'chat_empty_selling')+'</p>'+
+      '<button type="button" class="btn chat-empty-action" id="chatEmptyAction">'+t(buying ? 'chat_start_messaging' : 'chat_start_selling')+'</button></div>';
     document.getElementById('chatEmptyAction').addEventListener('click', function(){
       if(buying){ closeAllScreens(); window.scrollTo({top:0, behavior:'instant'}); }
       else { openPost(); }
