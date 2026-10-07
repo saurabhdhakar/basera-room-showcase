@@ -12,6 +12,7 @@
 - [x] Verify tab/filter/action interactions and preserve existing messaging behavior.
 
 ## Language preference and chat translations
-- [ ] Default first launch to English and persist Hindi only after an explicit language selection.
-- [ ] Translate every chat-list label and empty state from the global language state without changing handlers.
-- [ ] Verify first launch, saved language reload, instant language switching, and chat interactions.
+- [x] Default first launch to English and persist Hindi only after an explicit language selection.
+- [x] Ignore Hindi values auto-saved by the old startup logic so existing devices also open in English.
+- [x] Translate every chat-list label and empty state from the global language state without changing handlers.
+- [x] Verify first launch, saved language reload, instant language switching, and chat interactions.

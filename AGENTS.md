@@ -18,3 +18,7 @@
 ## Embedded chat screen
 - Keep the marketplace chat list and its synchronous tab/filter state in the embedded Basera application, reusing existing navigation and listing actions so the original screens and local messaging remain intact.
 - Treat missing chat roles as buying and filter only explicit conversation metadata; never fabricate sellers, unread messages, or Elite status to populate filters.
+
+## Language preference
+- Persist the UI language only from an explicit language-menu choice under its dedicated storage key, never from startup rendering, so the English default can't be overwritten by an automatic save.
+- Render all chat-list text through the shared `t()` translations and `data-i18n` attributes so it changes along with the global language.
