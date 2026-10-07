@@ -1784,8 +1784,16 @@ var LANGS = [
   {code:'hi', name:'हिन्दी'},
   {code:'en', name:'English'}
 ];
+/* English is the default. Only a language the user explicitly picked in the
+   language menu (saved under basera_app_lang) overrides it. The legacy
+   basera_lang key was auto-written with 'hi' on every launch, so it is ignored. */
+var LANG_PREF_KEY = 'basera_app_lang';
 var currentLang = 'en';
-try{ var savedLang = localStorage.getItem('basera_lang'); if(savedLang && I18N[savedLang]) currentLang = savedLang; }catch(e){}
+try{
+  var savedLang = localStorage.getItem(LANG_PREF_KEY);
+  if(savedLang && I18N[savedLang]) currentLang = savedLang;
+  localStorage.removeItem('basera_lang');
+}catch(e){}
 function t(key){ return (I18N[currentLang] && I18N[currentLang][key]) || (I18N.hi[key]) || key; }
 function catLabel(cat){ return t('cat_'+cat); }
 
@@ -2936,7 +2944,10 @@ function renderLangList(){
 }
 document.getElementById('langList').addEventListener('click', function(e){
   var item = e.target.closest('[data-lang]'); if(!item) return;
-  applyLanguage(item.getAttribute('data-lang'));
+  var chosen = item.getAttribute('data-lang');
+  if(!I18N[chosen]) return;
+  try{ localStorage.setItem(LANG_PREF_KEY, chosen); }catch(e){}
+  applyLanguage(chosen);
   closeModal('langModal');
   showToast(t('toast_lang_changed'));
 });
@@ -2944,7 +2955,6 @@ document.getElementById('langList').addEventListener('click', function(e){
 function applyLanguage(code){
   if(!I18N[code]) return;
   currentLang = code;
-  try{ localStorage.setItem('basera_lang', code); }catch(e){}
   document.documentElement.lang = code;
   document.querySelectorAll('[data-i18n]').forEach(function(el){
     var key = el.getAttribute('data-i18n');
