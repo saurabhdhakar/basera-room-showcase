@@ -13,5 +13,6 @@
 
 ## Language preference and chat translations
 - [ ] Default first launch to English and persist Hindi only after an explicit language selection.
+- [ ] Ignore Hindi values auto-saved by the old startup logic so existing devices also open in English.
 - [ ] Translate every chat-list label and empty state from the global language state without changing handlers.
 - [ ] Verify first launch, saved language reload, instant language switching, and chat interactions.
