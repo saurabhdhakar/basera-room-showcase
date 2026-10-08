@@ -3672,6 +3672,48 @@ document.getElementById('chatInput').addEventListener('keydown', function(e){
   if(e.key === 'Enter'){ sendChatMessage(); }
 });
 
+document.addEventListener('basera-return-home', function(){
+  closeAllScreens();
+  window.scrollTo(0,0);
+});
+document.addEventListener('basera-favorites-sync', function(event){
+  favoriteIds = new Set(event.detail || []);
+  document.querySelectorAll('[data-heart]').forEach(function(button){
+    var saved = favoriteIds.has(button.getAttribute('data-heart'));
+    button.classList.toggle('saved',saved);
+    button.textContent = saved ? '♥' : '♡';
+    button.setAttribute('aria-pressed',String(saved));
+  });
+});
+document.addEventListener('basera-open-listing', function(event){
+  var listing = ALL.find(function(item){return item.id === event.detail;});
+  if(listing) openDetail(listing);
+});
+var activeVoiceSearch = null;
+document.addEventListener('basera-voice', function(){
+  var input = document.getElementById('searchInput');
+  var Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!Recognition){
+    input.focus();
+    showToast(currentLang==='hi'?'इस ब्राउज़र में बोलकर खोज उपलब्ध नहीं है':'Voice search is not available in this browser');
+    return;
+  }
+  if(activeVoiceSearch){ activeVoiceSearch.stop(); return; }
+  var recognition = new Recognition();
+  activeVoiceSearch = recognition;
+  recognition.lang = currentLang==='hi'?'hi-IN':'en-IN';
+  recognition.interimResults = false;
+  recognition.onresult = function(event){
+    input.value = event.results[0][0].transcript;
+    input.dispatchEvent(new Event('input',{bubbles:true}));
+    input.focus();
+  };
+  recognition.onerror = function(){ showToast(currentLang==='hi'?'माइक्रोफ़ोन उपलब्ध नहीं है। कृपया लिखकर खोजें।':'Microphone unavailable. Please type your search.'); };
+  recognition.onend = function(){ activeVoiceSearch = null; };
+  try{ recognition.start(); showToast(currentLang==='hi'?'सुन रहे हैं…':'Listening…'); }
+  catch(e){ activeVoiceSearch=null; input.focus(); }
+});
+
 applyLanguage(currentLang);
 initFirebase();
 })();
