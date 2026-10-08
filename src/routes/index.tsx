@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { WishlistNavigation } from "@/components/WishlistNavigation";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -15,11 +17,16 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const [embeddedDocument, setEmbeddedDocument] = useState<Document | null>(null);
   return (
+    <>
     <iframe
       src="/basera.html"
       title="Basera"
       className="fixed inset-0 h-full w-full border-0"
+      onLoad={(event) => setEmbeddedDocument(event.currentTarget.contentDocument)}
     />
+    {embeddedDocument && <WishlistNavigation document={embeddedDocument} />}
+    </>
   );
 }

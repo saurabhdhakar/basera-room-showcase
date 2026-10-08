@@ -22,3 +22,7 @@
 ## Language preference
 - Persist the UI language only from an explicit language-menu choice under its dedicated storage key, never from startup rendering, so the English default can't be overwritten by an automatic save.
 - Render all chat-list text through the shared `t()` translations and `data-i18n` attributes so it changes along with the global language.
+
+## Header and wishlist
+- Render header tools and wishlist through React portals into the embedded document; use document events for language, navigation, and favorites so the existing application remains intact.
+- Keep wishlist selections in React session state and mirror selection IDs to embedded listing controls; no backend or persistent storage is needed for this session-only feature.
