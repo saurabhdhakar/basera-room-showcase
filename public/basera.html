@@ -36,6 +36,11 @@
   --chat-selected:#EAF3FF;
   --chat-border:#CBD4D6;
   --chat-on-action:#FFFFFF;
+  --wishlist-red:#A82236;
+  --wishlist-pink:#F6B5C4;
+  --header-feedback:#363D60;
+  --wishlist-action:#173047;
+  --wishlist-shadow:0 8px 28px #1B214026;
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
@@ -82,13 +87,47 @@ header.top{
   padding:7px 10px; border-radius:20px; color:#fff; font-size:13px; max-width:150px;
 }
 .loc-btn span{overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
-.search-row{padding:0 14px 12px; display:flex; gap:8px;}
+.search-row{padding:0 14px 12px; display:flex; gap:8px; align-items:center;}
 .search-box{
-  flex:1; display:flex; align-items:center; gap:8px;
+  flex:1; min-width:0; display:flex; align-items:center; gap:8px;
   background:#fff; border-radius:10px; padding:10px 12px;
 }
-.search-box input{border:none; outline:none; flex:1; font-size:14.5px; color:var(--text); background:transparent;}
+.search-box input{border:none; outline:none; flex:1; min-width:0; font-size:14.5px; color:var(--chat-ink); background:transparent;}
 .search-box svg{flex:0 0 auto; color:var(--muted);}
+#reactHeaderTools{display:flex; gap:2px; flex-shrink:0;}
+#reactSearchMic{display:flex; flex-shrink:0;}
+.header-tool,.wishlist-back,.wishlist-remove{display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; flex-shrink:0; border-radius:8px; color:var(--chat-on-action); position:relative; transition:background .12s,transform .12s;}
+.header-tool svg,.wishlist-back svg,.wishlist-remove svg{width:24px; height:24px; flex-shrink:0;}
+.header-tool:hover{background:var(--header-feedback);}
+.header-tool:active,.wishlist-action:active,.wishlist-back:active,.wishlist-remove:active{transform:scale(.94);}
+.search-mic{width:32px; height:32px; color:var(--muted);}
+.search-mic:hover,.wishlist-back:hover,.wishlist-remove:hover{background:var(--chat-selected);}
+.header-tool:focus-visible,.wishlist-back:focus-visible,.wishlist-action:focus-visible,.wishlist-remove:focus-visible{outline:2px solid var(--chat-blue); outline-offset:2px;}
+.favorite-count{position:absolute; top:0; right:0; min-width:16px; height:16px; border-radius:50%; background:var(--danger); color:var(--chat-on-action); font-size:10px; line-height:16px;}
+.wishlist-screen{position:fixed; inset:0; z-index:60; background:var(--card); color:var(--text); overflow-y:auto; padding-bottom:env(safe-area-inset-bottom,0px);}
+.wishlist-header{display:flex; align-items:center; gap:8px; padding:12px 14px; padding-top:calc(12px + env(safe-area-inset-top,0px)); border-bottom:1px solid var(--line);}
+.wishlist-header h1{font-size:20px; font-weight:800; letter-spacing:0;}
+.wishlist-back{color:var(--text);}
+.wishlist-empty{min-height:calc(100dvh - 82px); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px; padding:32px 24px 90px; text-align:center;}
+.wishlist-art{width:200px; height:170px; flex-shrink:0; margin-bottom:12px;}
+.wishlist-heart-large{fill:var(--wishlist-red);}
+.wishlist-heart-small{fill:var(--wishlist-pink);}
+.wishlist-empty h2{font-size:20px; line-height:1.5; max-width:420px; font-weight:800;}
+.wishlist-empty p{font-size:14px; line-height:1.7; color:var(--muted); max-width:350px;}
+.wishlist-action{display:inline-flex; align-items:center; justify-content:center; background:var(--wishlist-action); color:var(--chat-on-action); border-radius:24px; height:48px; min-width:150px; padding:0 28px; font-weight:700; font-size:15px; transition:transform .12s,opacity .12s; margin-top:6px;}
+.wishlist-action:hover{opacity:.9;}
+.header-notifications{position:fixed; z-index:61; top:130px; right:14px; width:min(320px,calc(100% - 28px)); background:var(--card); color:var(--text); border:1px solid var(--line); border-radius:8px; padding:16px; box-shadow:var(--wishlist-shadow);}
+.header-notifications>div{display:flex; align-items:center; justify-content:space-between;}
+.header-notifications h2{font-size:18px;}
+.header-notifications p{font-size:14px; color:var(--muted); padding:16px 0;}
+.wishlist-list{max-width:760px; margin:0 auto; padding:20px 16px; display:grid; gap:12px;}
+.wishlist-item{display:flex; align-items:center; border:1px solid var(--line); border-radius:8px; overflow:hidden;}
+.wishlist-listing{display:flex; align-items:center; text-align:left; gap:14px; color:var(--text); padding:12px; flex:1; min-width:0;}
+.wishlist-listing img{width:90px; height:90px; object-fit:cover; border-radius:4px;}
+.wishlist-listing span{display:grid; gap:7px; min-width:0; white-space:normal; overflow-wrap:anywhere;}
+.wishlist-listing small{color:var(--muted);}
+.wishlist-remove{color:var(--wishlist-red); margin-right:8px;}
+@media(prefers-reduced-motion:reduce){.header-tool,.wishlist-action,.wishlist-back,.wishlist-remove{transition:none;}}
 
 /* category tabs */
 .tabs{display:flex; gap:8px; padding:0 14px 12px; overflow-x:auto;}
@@ -714,7 +753,9 @@ body.chat-list-open .nav-item.active svg{fill:var(--chat-selected);}
     <div class="search-box">
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       <input id="searchInput" data-i18n-ph="search_ph" placeholder="Search locality, e.g. Andheri, Koramangala...">
+      <div id="reactSearchMic"></div>
     </div>
+    <div id="reactHeaderTools"></div>
   </div>
   <div class="tabs" id="tabs">
     <button class="tab active" data-cat="all" data-i18n="tab_all">All</button>
@@ -1815,6 +1856,7 @@ var firebaseConfig = {
 
 var fbAuth = null, fbDb = null, fbStorage = null, fbUser = null;
 var ALL = [];                 // live: approved/active listings only (public feed)
+var favoriteIds = new Set(); // mirrored from React session state
 var userListings = [];        // live: the signed-in user's own listings, any status
 var listingsLoading = true;   // true until the first Firestore snapshot arrives
 var listingsError = null;     // set if the Firestore listener fails (permissions/offline/etc.)
@@ -2185,7 +2227,7 @@ function cardHTML(l){
         '<span class="date-tag">'+formatPostedDate(l)+'</span>'+
       '</div>'+
     '</div>'+
-    '<span class="heart-btn" data-heart="'+l.id+'">♡</span>'+
+    '<button class="heart-btn'+(favoriteIds.has(l.id)?' saved':'')+'" data-heart="'+l.id+'" aria-label="'+(currentLang==='hi'?'पसंद करें':'Favorite')+'" aria-pressed="'+favoriteIds.has(l.id)+'">'+(favoriteIds.has(l.id)?'♥':'♡')+'</button>'+
   '</div>';
 }
 
@@ -2268,6 +2310,8 @@ function render(){
       e.stopPropagation();
       h.classList.toggle('saved');
       h.textContent = h.classList.contains('saved') ? '♥' : '♡';
+      var listing = ALL.find(function(l){return l.id === h.getAttribute('data-heart');});
+      if(listing) document.dispatchEvent(new CustomEvent('basera-favorite', {detail:listing}));
     });
   });
 }
@@ -2839,6 +2883,7 @@ function openDetail(l){
 
 /* ---------------- PROFILE & MY ADS SCREENS ---------------- */
 function closeAllScreens(){
+  document.dispatchEvent(new CustomEvent('basera-close-screens'));
   document.body.classList.remove("chat-list-open");
   document.getElementById('profileScreen').classList.remove('open');
   document.getElementById('myAdsScreen').classList.remove('open');
@@ -2956,6 +3001,7 @@ function applyLanguage(code){
   if(!I18N[code]) return;
   currentLang = code;
   document.documentElement.lang = code;
+  document.dispatchEvent(new CustomEvent('basera-language'));
   document.querySelectorAll('[data-i18n]').forEach(function(el){
     var key = el.getAttribute('data-i18n');
     if(I18N[code][key] !== undefined) el.textContent = I18N[code][key];
@@ -2985,6 +3031,11 @@ function applyLanguage(code){
 document.getElementById('profileMenu').addEventListener('click', function(e){
   var item = e.target.closest('.menu-item'); if(!item) return;
   var action = item.getAttribute('data-action');
+  if(action === 'wishlist'){
+    closeAllScreens();
+    document.dispatchEvent(new CustomEvent('basera-wishlist'));
+    return;
+  }
   if(action === 'myads'){
     document.getElementById('myAdsNavBtn').click();
     return;
@@ -3619,6 +3670,48 @@ function sendChatMessage(){
 document.getElementById('chatSendBtn').addEventListener('click', sendChatMessage);
 document.getElementById('chatInput').addEventListener('keydown', function(e){
   if(e.key === 'Enter'){ sendChatMessage(); }
+});
+
+document.addEventListener('basera-return-home', function(){
+  closeAllScreens();
+  window.scrollTo(0,0);
+});
+document.addEventListener('basera-favorites-sync', function(event){
+  favoriteIds = new Set(event.detail || []);
+  document.querySelectorAll('[data-heart]').forEach(function(button){
+    var saved = favoriteIds.has(button.getAttribute('data-heart'));
+    button.classList.toggle('saved',saved);
+    button.textContent = saved ? '♥' : '♡';
+    button.setAttribute('aria-pressed',String(saved));
+  });
+});
+document.addEventListener('basera-open-listing', function(event){
+  var listing = ALL.find(function(item){return item.id === event.detail;});
+  if(listing) openDetail(listing);
+});
+var activeVoiceSearch = null;
+document.addEventListener('basera-voice', function(){
+  var input = document.getElementById('searchInput');
+  var Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!Recognition){
+    input.focus();
+    showToast(currentLang==='hi'?'इस ब्राउज़र में बोलकर खोज उपलब्ध नहीं है':'Voice search is not available in this browser');
+    return;
+  }
+  if(activeVoiceSearch){ activeVoiceSearch.stop(); return; }
+  var recognition = new Recognition();
+  activeVoiceSearch = recognition;
+  recognition.lang = currentLang==='hi'?'hi-IN':'en-IN';
+  recognition.interimResults = false;
+  recognition.onresult = function(event){
+    input.value = event.results[0][0].transcript;
+    input.dispatchEvent(new Event('input',{bubbles:true}));
+    input.focus();
+  };
+  recognition.onerror = function(){ showToast(currentLang==='hi'?'माइक्रोफ़ोन उपलब्ध नहीं है। कृपया लिखकर खोजें।':'Microphone unavailable. Please type your search.'); };
+  recognition.onend = function(){ activeVoiceSearch = null; };
+  try{ recognition.start(); showToast(currentLang==='hi'?'सुन रहे हैं…':'Listening…'); }
+  catch(e){ activeVoiceSearch=null; input.focus(); }
 });
 
 applyLanguage(currentLang);

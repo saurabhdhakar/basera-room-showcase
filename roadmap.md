@@ -16,3 +16,8 @@
 - [x] Ignore Hindi values auto-saved by the old startup logic so existing devices also open in English.
 - [x] Translate every chat-list label and empty state from the global language state without changing handlers.
 - [x] Verify first launch, saved language reload, instant language switching, and chat interactions.
+
+## Header and wishlist
+- [x] Add microphone, favorites, and notification controls beside search.
+- [x] Add React session-state wishlist with translated empty state, saved listings, and working return actions.
+- [x] Verify navigation, session favorite add/remove, touch feedback, and language synchronization; live property data and microphone permission remain dependent on configured Firebase and browser support.
