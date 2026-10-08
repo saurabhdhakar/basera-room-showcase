@@ -18,6 +18,6 @@
 - [x] Verify first launch, saved language reload, instant language switching, and chat interactions.
 
 ## Header and wishlist
-- [ ] Add microphone, favorites, and notification controls beside search.
-- [ ] Add React session-state wishlist with translated empty state, saved listings, and working return actions.
-- [ ] Verify navigation, favorites, touch feedback, and language synchronization.
+- [x] Add microphone, favorites, and notification controls beside search.
+- [x] Add React session-state wishlist with translated empty state, saved listings, and working return actions.
+- [x] Verify navigation, session favorite add/remove, touch feedback, and language synchronization; live property data and microphone permission remain dependent on configured Firebase and browser support.
