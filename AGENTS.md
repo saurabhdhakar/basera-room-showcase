@@ -26,3 +26,7 @@
 ## Header and wishlist
 - Render header tools and wishlist through React portals into the embedded document; use document events for language, navigation, and favorites so the existing application remains intact.
 - Keep wishlist selections in React session state and mirror selection IDs to embedded listing controls; no backend or persistent storage is needed for this session-only feature.
+
+## Pre-home authentication
+- Keep the managed account check and welcome/sign-in states in the top-level TanStack home route; render the existing marketplace iframe only for an authenticated session so its independent Firebase behavior remains unchanged.
+- Store user-owned personalization fields in `public.profiles` with owner-only policies and create profile rows from auth signup metadata, keeping roles separate.
