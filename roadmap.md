@@ -21,3 +21,8 @@
 - [x] Add microphone, favorites, and notification controls beside search.
 - [x] Add React session-state wishlist with translated empty state, saved listings, and working return actions.
 - [x] Verify navigation, session favorite add/remove, touch feedback, and language synchronization; live property data and microphone permission remain dependent on configured Firebase and browser support.
+## Pre-home sign-in flow
+- [ ] Add the Basera welcome and email/social sign-in experience before the existing marketplace home.
+- [ ] Check the managed account session on launch and keep the marketplace behind the sign-in flow.
+- [ ] Save a user-owned profile on account creation without altering chat, wishlist, or embedded Firebase behavior.
+- [ ] Verify welcome, sign-in, signup confirmation, authenticated entry, and existing home navigation.
